@@ -1,0 +1,46 @@
+version: "3.7"
+
+services:
+  client:
+    build:
+      context: ./client-app/
+      dockerfile: ./dev.Dockerfile
+    image: react-dev-image
+    container_name: client-dev
+    volumes:
+      - ./client-app:/usr/app
+    environment:
+      - PORT=5000
+      - HOST=0.0.0.0
+      - BROWSER=none
+    networks:
+      - frontend
+    tty: true
+
+  server:
+    build:
+      context: ./server-app/
+      dockerfile: ./dev.Dockerfile
+    image: dotnetcore-dev-image
+    container_name: server-dev
+    volumes:
+      - ./server-app:/usr/app
+      - ./.aspnet:/root/.aspnet
+    ports:
+      - "5000:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - FRONTEND_DEV_SERVER_URL=http://client:5000
+      - SPA_STATIC_FILES_PATH=client-app-build
+      - DOTNET_USE_POLLING_FILE_WATCHER=true
+      - ASPNETCORE_URLS=http://+:80
+    networks:
+      - frontend
+      - backend
+
+networks:
+  frontend:
+  backend:
+
+volumes:
+  app_db:
