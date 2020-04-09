@@ -5,7 +5,7 @@ services:
     build:
       context: ./client-app/
       dockerfile: ./dev.Dockerfile
-    image: react-dev-image
+    image: vue-dev-image
     container_name: client-dev
     volumes:
       - ./client-app:/usr/app
@@ -15,7 +15,6 @@ services:
       - BROWSER=none
     networks:
       - frontend
-    tty: true
 
   server:
     build:

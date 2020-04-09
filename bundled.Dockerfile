@@ -38,7 +38,7 @@ ENV SPA_STATIC_FILES_PATH=$SPA_STATIC_FILES_PATH
 
 WORKDIR /usr/app
 
-COPY --from=client-build /usr/app/build ${SPA_STATIC_FILES_PATH}
+COPY --from=client-build /usr/app/dist ${SPA_STATIC_FILES_PATH}
 COPY --from=server-build /usr/app/server-dlls ./
 
 EXPOSE 80

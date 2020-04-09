@@ -5,6 +5,7 @@ WORKDIR /usr/app
 ENV PATH /usr/app/node_modules/.bin:$PATH
 
 COPY ./package.json /usr/app/
+COPY ./yarn.lock /usr/app/
 
 RUN yarn
 
@@ -12,4 +13,4 @@ COPY . /usr/app
 
 EXPOSE 3000
 
-ENTRYPOINT ["yarn","start"]
+ENTRYPOINT ["yarn","serve"]
