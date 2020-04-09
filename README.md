@@ -4,8 +4,8 @@ To run both development servers, just use `docker-compose up`. To add packages t
 
 ## Branch links
 
-- [react 16.13.1](Softyy/docker-dotnetcore-react-starter/tree/react-16.3.1/)
-- [vue 2.6.11](Softyy/docker-dotnetcore-react-starter/tree/react-16.3.1/)
+- [react 16.13.1](/tree/react-16.3.1/)
+- [vue 2.6.11](/tree/react-16.3.1/)
 
 ## FYI
 
